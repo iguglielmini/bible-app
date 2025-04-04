@@ -1,4 +1,3 @@
-import { IsNotEmpty, IsEmail } from 'class-validator';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -7,30 +6,39 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+export enum UserRole {
+  ADMIN = 'admin',
+  EQUIPE = 'equipe',
+  USER = 'user',
+}
+
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  @IsNotEmpty({ message: 'O nome é obrigatório.' })
+  @Column({ nullable: false })
   name: string;
 
-  @Column()
-  @IsNotEmpty({ message: 'O Sobrenome é obrigatório.' })
+  @Column({ nullable: false })
   surname: string;
 
   @Column({ unique: true })
-  @IsEmail({}, { message: 'O Sobrenome é obrigatório.' })
   email: string;
 
-  @Column()
-  @IsNotEmpty({ message: 'A senha é obrigatório.' })
+  @Column({ nullable: false })
   password: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole;
 
-  @UpdateDateColumn()
-  update_at: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 }
