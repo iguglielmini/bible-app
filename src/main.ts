@@ -12,6 +12,7 @@ async function bootstrap() {
     .setTitle('Bible Backend')
     .setDescription('Documentação da API')
     .setVersion('1.0')
+    .addBearerAuth() // importante se for usar JWT nas rotas
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
