@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { BannerIntroModule } from './bannerIntro/banner-intro.module';
+import { SermonModule } from './sermon/sermon.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { BannerIntroModule } from './bannerIntro/banner-intro.module';
     UsersModule,
     AuthModule,
     BannerIntroModule,
+    SermonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
