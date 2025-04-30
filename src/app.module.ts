@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { BannerIntroModule } from './bannerIntro/banner-intro.module';
 import { SermonModule } from './sermon/sermon.module';
+import { EventsModules } from './events/events.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { SermonModule } from './sermon/sermon.module';
     AuthModule,
     BannerIntroModule,
     SermonModule,
+    EventsModules
   ],
   controllers: [AppController],
   providers: [AppService],
